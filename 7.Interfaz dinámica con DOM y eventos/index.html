@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Córdoba Geek · Simulador de Eventos</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- ==========================================
+         ENCABEZADO
+    ========================================== -->
+    <header class="cabecera">
+        <h1>Córdoba Geek</h1>
+        <p>Simulador de reservas de eventos</p>
+    </header>
+
+    <main class="contenido">
+
+        <!-- ==========================================
+             FORMULARIO PARA AGREGAR EVENTOS
+        ========================================== -->
+        <section class="panel" aria-labelledby="titulo-formulario">
+            <h2 id="titulo-formulario">Agregar evento</h2>
+
+            <form id="formulario-evento" class="formulario">
+
+                <div class="campo">
+                    <label for="input-nombre">Nombre</label>
+                    <input type="text" id="input-nombre" placeholder="Ej: Cosplay Fest" autocomplete="off">
+                </div>
+
+                <div class="campo">
+                    <label for="input-categoria">Categoría</label>
+                    <input type="text" id="input-categoria" placeholder="Ej: Anime" autocomplete="off">
+                </div>
+
+                <div class="campo">
+                    <label for="input-precio">Precio ($)</label>
+                    <input type="number" id="input-precio" placeholder="Ej: 4500" min="0">
+                </div>
+
+                <div class="campo">
+                    <label for="input-cupos">Cupos</label>
+                    <input type="number" id="input-cupos" placeholder="Ej: 100" min="1">
+                </div>
+
+                <button type="submit" id="boton-agregar" class="boton boton-primario">
+                    + Agregar evento
+                </button>
+            </form>
+
+            <!-- Feedback visual de cada accion -->
+            <p id="feedback" class="mensaje" role="status" aria-live="polite"></p>
+        </section>
+
+        <!-- ==========================================
+             LISTADO DE EVENTOS
+        ========================================== -->
+        <section class="panel" aria-labelledby="titulo-listado">
+            <div class="barra-busqueda">
+                <h2 id="titulo-listado">Eventos disponibles</h2>
+                <input type="search" id="buscador" placeholder="Buscar por nombre o categoría..."
+                    aria-label="Buscar eventos" autocomplete="off">
+            </div>
+
+            <p id="contador-resultados" class="contador"></p>
+
+            <!-- Contenedor vacio: aqui se inyecta el HTML dinamico -->
+            <div id="contenedor-eventos" class="contenedor-eventos"></div>
+        </section>
+
+    </main>
+
+    <script src="js/main.js"></script>
+</body>
+
+</html>
