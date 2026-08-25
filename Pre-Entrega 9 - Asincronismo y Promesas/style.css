@@ -9,14 +9,11 @@
 
 body {
     font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
-    background: linear-gradient(135deg, #1e1b4b 0%, #312e81 60%, #4c1d95 100%);
+    background: linear-gradient(135deg, #111827 0%, #1e1b4b 55%, #4c1d95 100%);
     color: #1f2937;
     min-height: 100vh;
 }
 
-/* ==========================================
-   ENCABEZADO
-========================================== */
 .cabecera {
     text-align: center;
     padding: 2rem 1rem 1rem;
@@ -33,11 +30,15 @@ body {
     margin-top: 0.25rem;
 }
 
-/* ==========================================
-   CONTENEDOR PRINCIPAL
-========================================== */
+.mensaje-asincronico {
+    min-height: 1.25rem;
+    margin-top: 0.75rem;
+    color: #fde68a;
+    font-weight: 600;
+}
+
 .contenido {
-    max-width: 860px;
+    max-width: 900px;
     margin: 0 auto;
     padding: 0 1rem 3rem;
     display: grid;
@@ -79,7 +80,8 @@ body {
     color: #4b5563;
 }
 
-.campo input {
+.campo input,
+.barra-busqueda input {
     padding: 0.6rem 0.75rem;
     border: 1px solid #d1d5db;
     border-radius: 8px;
@@ -87,7 +89,8 @@ body {
     transition: border-color 0.15s ease, box-shadow 0.15s ease;
 }
 
-.campo input:focus {
+.campo input:focus,
+.barra-busqueda input:focus {
     outline: none;
     border-color: #6366f1;
     box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
@@ -107,7 +110,7 @@ body {
 }
 
 .boton:hover {
-    filter: brightness(1.1);
+    filter: brightness(1.08);
 }
 
 .boton:active {
@@ -131,7 +134,7 @@ body {
 }
 
 /* ==========================================
-   FEEDBACK VISUAL
+   FEEDBACK
 ========================================== */
 .mensaje {
     margin-top: 1rem;
@@ -157,9 +160,10 @@ body {
 }
 
 /* ==========================================
-   BARRA DE BUSQUEDA
+   LISTADO
 ========================================== */
-.barra-busqueda {
+.barra-busqueda,
+.acciones-storage {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -170,27 +174,17 @@ body {
 .barra-busqueda input {
     flex: 1;
     min-width: 220px;
-    padding: 0.6rem 0.9rem;
-    border: 1px solid #d1d5db;
-    border-radius: 8px;
-    font-size: 0.95rem;
 }
 
-.barra-busqueda input:focus {
-    outline: none;
-    border-color: #6366f1;
-    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+.acciones-storage {
+    margin: 0.5rem 0 1rem;
 }
 
 .contador {
-    margin: 0.5rem 0;
     font-size: 0.8rem;
     color: #6b7280;
 }
 
-/* ==========================================
-   TARJETAS DE EVENTOS
-========================================== */
 .contenedor-eventos {
     display: grid;
     gap: 0.85rem;
@@ -243,7 +237,6 @@ body {
     flex-shrink: 0;
 }
 
-/* Resaltado al agregar un evento */
 .tarjeta-evento.destacado {
     animation: resaltar 1.2s ease;
 }
