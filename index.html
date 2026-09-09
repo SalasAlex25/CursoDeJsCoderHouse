@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Córdoba Geek Experiences</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+  <script src="js/experiencias.js" defer></script>
+  <script src="js/reservas.js" defer></script>
+  <script src="js/app.js" defer></script>
+</head>
+<body>
+  <header class="cabecera">
+    <div>
+      <p class="marca">CÓRDOBA GEEK</p>
+      <h1>Experiencias que salen de lo común</h1>
+      <p>Reservá talleres, exposiciones y encuentros para compartir tu pasión geek.</p>
+    </div>
+    <p id="mensaje-asincronico" class="mensaje-asincronico" aria-live="polite"></p>
+  </header>
+
+  <main class="contenido">
+    <section class="panel panel-experiencias" aria-labelledby="titulo-experiencias">
+      <div class="barra-superior">
+        <div>
+          <p class="eyebrow">AGENDA ABIERTA</p>
+          <h2 id="titulo-experiencias">Elegí tu próxima experiencia</h2>
+        </div>
+        <label class="buscador">
+          <span>Buscar</span>
+          <input id="buscador-experiencias" type="search" placeholder="Nombre o categoría...">
+        </label>
+      </div>
+      <p id="estado-carga" class="estado" aria-live="polite">Cargando experiencias...</p>
+      <div id="contenedor-experiencias" class="grilla-experiencias"></div>
+    </section>
+
+    <section class="panel panel-reserva" aria-labelledby="titulo-reserva">
+      <div class="panel-heading">
+        <p class="eyebrow">TU RESERVA</p>
+        <h2 id="titulo-reserva">Completá los datos</h2>
+      </div>
+      <form id="formulario-reserva" class="formulario">
+        <label>Experiencia
+          <select id="experiencia-seleccionada" name="experiencia" required>
+            <option value="">Seleccioná una experiencia</option>
+          </select>
+        </label>
+        <label>Fecha
+          <input id="fecha-reserva" name="fecha" type="date" required>
+        </label>
+        <label>Horario
+          <select id="horario-reserva" name="horario" required>
+            <option value="">Seleccioná un horario</option>
+          </select>
+        </label>
+        <label>Personas
+          <input id="personas-reserva" name="personas" type="number" min="1" max="10" value="1" required>
+        </label>
+        <div id="resumen-reserva" class="resumen-reserva">Seleccioná una experiencia para ver el precio.</div>
+        <button class="boton boton-primario" type="submit">Confirmar reserva</button>
+      </form>
+    </section>
+
+    <section class="panel" aria-labelledby="titulo-guardadas">
+      <div class="barra-superior">
+        <div>
+          <p class="eyebrow">PERSISTENCIA LOCAL</p>
+          <h2 id="titulo-guardadas">Mis reservas</h2>
+        </div>
+        <button id="boton-vaciar" class="boton boton-peligro" type="button">Vaciar reservas</button>
+      </div>
+      <div id="contenedor-reservas" class="lista-reservas"></div>
+    </section>
+  </main>
+</body>
+</html>

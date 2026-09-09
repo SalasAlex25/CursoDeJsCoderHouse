@@ -1,0 +1,46 @@
+[
+  {
+    "id": 1,
+    "nombre": "Escape Room de Ciencia Ficción",
+    "categoria": "Ciencia ficción",
+    "descripcion": "Resolvé enigmas y escapá de una estación espacial abandonada.",
+    "precio": 8500,
+    "duracion": "60 minutos",
+    "cupos": 10,
+    "imagen": "assets/images/escape-room.png",
+    "horarios": ["18:00", "20:00", "22:00"]
+  },
+  {
+    "id": 2,
+    "nombre": "Taller de Impresión 3D",
+    "categoria": "Tecnología",
+    "descripcion": "Diseñá e imprimí tu propio objeto geek para llevarte a casa.",
+    "precio": 12000,
+    "duracion": "90 minutos",
+    "cupos": 8,
+    "imagen": "assets/images/impresion-3d.png",
+    "horarios": ["15:00", "17:00", "19:00"]
+  },
+  {
+    "id": 3,
+    "nombre": "Noche de Juegos de Mesa",
+    "categoria": "Juegos de mesa",
+    "descripcion": "Una noche para descubrir juegos modernos con acompañamiento de anfitriones.",
+    "precio": 6500,
+    "duracion": "3 horas",
+    "cupos": 20,
+    "imagen": "assets/images/juegos-mesa.png",
+    "horarios": ["19:00", "21:00"]
+  },
+  {
+    "id": 4,
+    "nombre": "Taller de Cosplay",
+    "categoria": "Cultura pop",
+    "descripcion": "Aprendé técnicas simples para crear accesorios y detalles de personaje.",
+    "precio": 10000,
+    "duracion": "2 horas",
+    "cupos": 12,
+    "imagen": "assets/images/cosplay.png",
+    "horarios": ["14:00", "16:30", "19:00"]
+  }
+]
