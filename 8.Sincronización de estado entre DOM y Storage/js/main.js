@@ -117,26 +117,15 @@ const eventosIniciales = [
 
 const cargarEventos = () => {
 
-    let eventosCargados = eventosIniciales.map((evento) => new Evento(evento));
+    const eventosGuardados = JSON.parse(
+        localStorage.getItem(CLAVE_STORAGE) ?? "null"
+    );
 
-    try {
-        const eventosGuardados = JSON.parse(
-            localStorage.getItem(CLAVE_STORAGE) ?? "null"
-        );
+    const origenEventos = eventosGuardados ?? eventosIniciales;
 
-        const origenEventos = eventosGuardados ?? eventosIniciales;
 
-        // JSON.parse devuelve objetos planos; se reconstruyen como Evento para recuperar metodos.
-        eventosCargados = origenEventos.map((evento) => new Evento(evento));
-    } catch (error) {
-        console.error("No se pudieron leer los eventos guardados.", error);
-        localStorage.removeItem(CLAVE_STORAGE);
-        eventosCargados = eventosIniciales.map((evento) => new Evento(evento));
-    } finally {
-        console.info("Carga inicial del simulador finalizada.");
-    }
-
-    return eventosCargados;
+    // JSON.parse devuelve objetos planos; se reconstruyen como Evento para recuperar metodos.
+    return origenEventos.map((evento) => new Evento(evento));
 
 };
 
@@ -166,7 +155,6 @@ const inputPrecio = document.getElementById("input-precio");
 const inputCupos = document.getElementById("input-cupos");
 const buscador = document.getElementById("buscador");
 const feedback = document.getElementById("feedback");
-const mensajeAsincronico = document.getElementById("mensaje-asincronico");
 const contadorResultados = document.getElementById("contador-resultados");
 const botonVaciar = document.getElementById("boton-vaciar");
 
@@ -435,11 +423,3 @@ botonVaciar.addEventListener("click", () => {
 // ==========================================
 
 renderizarEventos();
-
-
-setTimeout(() => {
-
-    mensajeAsincronico.textContent =
-        "Cotizacion de referencia del dolar hoy: $1.200. Dato util para planificar reservas.";
-
-}, 2500);

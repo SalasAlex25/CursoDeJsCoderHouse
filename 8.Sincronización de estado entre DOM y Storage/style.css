@@ -30,25 +30,6 @@ body {
     margin-top: 0.25rem;
 }
 
-.mensaje-asincronico {
-    min-height: 1.4rem;
-    margin-top: 0.85rem;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0.45rem 0.8rem;
-    border-radius: 999px;
-    background: rgba(255, 255, 255, 0.12);
-    color: #fde68a;
-    font-size: 0.9rem;
-    font-weight: 700;
-    letter-spacing: 0.2px;
-}
-
-.mensaje-asincronico[hidden] {
-    display: none;
-}
-
 .contenido {
     max-width: 900px;
     margin: 0 auto;
