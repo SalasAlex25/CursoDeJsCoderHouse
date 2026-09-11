@@ -1,4 +1,5 @@
 let reservas = [];
+let reservaEditandoId = null;
 
 // Recupera las reservas guardadas en el navegador.
 function cargarReservas() {
@@ -33,8 +34,9 @@ function crearReserva(evento) {
   const formulario = evento.currentTarget;
   const datos = new FormData(formulario);
   const experiencia = experiencias.find((item) => item.id === Number(datos.get("experiencia")));
-  const reserva = { id: Date.now(), experienciaId: experiencia.id, nombre: experiencia.nombre, fecha: datos.get("fecha"), horario: datos.get("horario"), personas: Number(datos.get("personas")), total: experiencia.precio * Number(datos.get("personas")) };
-  reservas.push(reserva);
+  const reserva = { id: reservaEditandoId || Date.now(), experienciaId: experiencia.id, nombre: experiencia.nombre, fecha: datos.get("fecha"), horario: datos.get("horario"), personas: Number(datos.get("personas")), total: experiencia.precio * Number(datos.get("personas")) };
+  reservas = reservaEditandoId ? reservas.map((item) => item.id === reservaEditandoId ? reserva : item) : [...reservas, reserva];
+  reservaEditandoId = null;
   guardarReservas();
   renderizarReservas();
   formulario.reset();
@@ -45,8 +47,23 @@ function crearReserva(evento) {
 // Muestra las reservas persistidas en el DOM.
 function renderizarReservas() {
   const contenedor = document.getElementById("contenedor-reservas");
-  contenedor.innerHTML = reservas.length ? reservas.map((reserva) => `<article class="reserva-item"><div><strong>${reserva.nombre}</strong><p>${reserva.fecha} · ${reserva.horario} · ${reserva.personas} persona(s)</p></div><div><strong>$${reserva.total.toLocaleString("es-AR")}</strong><button class="boton-eliminar" data-reserva-id="${reserva.id}">Cancelar</button></div></article>`).join("") : `<p class="estado">Todavía no tenés reservas guardadas.</p>`;
+  contenedor.innerHTML = reservas.length ? reservas.map((reserva) => `<article class="reserva-item"><div><strong>${reserva.nombre}</strong><p>${reserva.fecha} · ${reserva.horario} · ${reserva.personas} persona(s)</p></div><div><strong>$${reserva.total.toLocaleString("es-AR")}</strong><button class="boton-editar" data-editar-id="${reserva.id}">Editar</button><button class="boton-eliminar" data-reserva-id="${reserva.id}">Cancelar</button></div></article>`).join("") : `<p class="estado">Todavía no tenés reservas guardadas.</p>`;
+  contenedor.querySelectorAll("[data-editar-id]").forEach((boton) => boton.addEventListener("click", () => editarReserva(Number(boton.dataset.editarId))));
   contenedor.querySelectorAll("[data-reserva-id]").forEach((boton) => boton.addEventListener("click", () => cancelarReserva(Number(boton.dataset.reservaId))));
+}
+
+// Carga una reserva existente dentro del formulario.
+function editarReserva(idReserva) {
+  const reserva = reservas.find(({ id }) => id === idReserva);
+  if (!reserva) return;
+  reservaEditandoId = idReserva;
+  document.getElementById("experiencia-seleccionada").value = reserva.experienciaId;
+  actualizarFormularioReserva();
+  document.getElementById("fecha-reserva").value = reserva.fecha;
+  document.getElementById("horario-reserva").value = reserva.horario;
+  document.getElementById("personas-reserva").value = reserva.personas;
+  document.getElementById("titulo-reserva").textContent = "Editar reserva";
+  document.getElementById("titulo-reserva").scrollIntoView({ behavior: "smooth" });
 }
 
 // Cancela una reserva después de confirmación visual.

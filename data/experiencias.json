@@ -42,5 +42,27 @@
     "cupos": 12,
     "imagen": "assets/images/cosplay.png",
     "horarios": ["14:00", "16:30", "19:00"]
+  },
+  {
+    "id": 5,
+    "nombre": "Feria de Cómics y Manga",
+    "categoria": "Cultura pop",
+    "descripcion": "Recorré stands, conocé artistas y descubrí nuevas historias para coleccionar.",
+    "precio": 5000,
+    "duracion": "3 horas",
+    "cupos": 30,
+    "imagen": "assets/images/comics-manga.png",
+    "horarios": ["11:00", "15:00", "18:00"]
+  },
+  {
+    "id": 6,
+    "nombre": "Laboratorio de Robótica",
+    "categoria": "Tecnología",
+    "descripcion": "Armá y programá un pequeño robot en una experiencia práctica para curiosos.",
+    "precio": 14000,
+    "duracion": "2 horas",
+    "cupos": 10,
+    "imagen": "assets/images/robotica.png",
+    "horarios": ["10:00", "14:00", "17:00"]
   }
 ]
