@@ -1,0 +1,42 @@
+.reserva-item > div:last-child {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.boton-editar,
+.boton-eliminar {
+  border: 0;
+  border-radius: 8px;
+  padding: 8px 12px;
+  font: inherit;
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.boton-editar {
+  background: #eee8ff;
+  color: var(--violeta);
+}
+
+.boton-editar:hover {
+  background: #ded2ff;
+}
+
+.boton-eliminar {
+  margin-left: 0;
+  background: #fff0f4;
+  color: #b42355;
+}
+
+.boton-eliminar:hover {
+  background: #ffdce8;
+}
+
+@media (max-width: 700px) {
+  .reserva-item > div:last-child {
+    width: 100%;
+    justify-content: flex-start;
+  }
+}
